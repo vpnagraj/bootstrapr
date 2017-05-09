@@ -1,0 +1,77 @@
+#' Build list of packages
+#'
+#' Creates the list of packages to be installed on the server
+#'
+#' @export
+#'
+#' @author VP Nagraj (\email{vpnagraj@virginia.edu})
+#'
+#' @param cran a character vector specifying packages from CRAN repository that you would like to install
+#'
+#' @param bioc a character vector specifying packages from the Bioconductor repository that you would like to install
+#'
+#' @examples
+#'packages(cran = c("dplyr", "ggplot2", "epicontacts", "rrefine"))
+
+packages <- function(cran = NULL, bioc = NULL) {
+
+  paste0(cran_packages(packages = cran),
+         "\n",
+         bioc_packages(packages = bioc))
+}
+
+#' Build list of CRAN packages
+#'
+#' Creates the list of packages from CRAN to be installed on the server
+#'
+#' @export
+#'
+#' @author VP Nagraj (\email{vpnagraj@virginia.edu})
+#'
+#' @param packages a character vector specifying packages from CRAN repository that you would like to install
+#' @param repos a character vector of length 1 specifying packages the CRAN mirror from which you want to install the packages; defaults to "https://cloud.r-project.org"
+#'
+#'
+
+cran_packages <- function(packages = NULL, repos = "https://cloud.r-project.org") {
+
+  if(is.null(packages)) {
+
+    invisible()
+
+  } else {
+
+    paste0("sudo R --no-save << EOF\n",
+           "install.packages(c(",
+           eval(paste0("'", packages, "'", collapse = ",")),
+           ")), repos = ",
+           paste0("'", repos, "'"),
+           ")\nEOF")
+  }
+}
+
+#' Creates the list of packages from Bioconductor to be installed on the server
+#'
+#' @export
+#'
+#' @author VP Nagraj (\email{vpnagraj@virginia.edu})
+#'
+#' @param packages a character vector specifying packages from Bioconductor repository that you would like to install
+#'
+#'
+
+bioc_packages <- function(packages = NULL) {
+
+  if(is.null(packages)) {
+
+    invisible()
+
+  } else {
+
+    paste0("sudo R --no-save << EOF\n",
+           "source('https://bioconductor.org/biocLite.R'); biocLite(c(",
+           eval(paste0("'", packages, "'", collapse = ",")),
+           ")))\nEOF")
+  }
+
+}
