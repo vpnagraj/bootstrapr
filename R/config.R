@@ -57,7 +57,7 @@ dependencies <- function(deps = NULL, update = TRUE) {
 
 setup <- function() {
 
-  "sudo sh -c 'echo 'deb http://cran.rstudio.com/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list'\ngpg --keyserver keyserver.ubuntu.com --recv-key E084DAB\ngpg -a --export E084DAB9 | sudo apt-key add -\n"
+  "sudo sh -c 'echo 'deb http://cran.rstudio.com/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list'"
 
 }
 
