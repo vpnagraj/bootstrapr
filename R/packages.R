@@ -15,9 +15,17 @@
 
 packages <- function(cran = NULL, bioc = NULL) {
 
-  paste0(cran_packages(packages = cran),
-         "\n",
-         bioc_packages(packages = bioc))
+  if (is.null(cran) & is.null(bioc)) {
+
+    invisible()
+
+  } else {
+
+    paste0(cran_packages(packages = cran),
+           "\n",
+           bioc_packages(packages = bioc))
+
+  }
 }
 
 #' Build list of CRAN packages
