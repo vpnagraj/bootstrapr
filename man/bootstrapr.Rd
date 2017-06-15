@@ -4,7 +4,9 @@
 \alias{bootstrapr}
 \title{Create the bootstrapping script}
 \usage{
-bootstrapr(write = TRUE, file_name = "bootstrap", file_ext = ".sh", ...)
+bootstrapr(cran = NULL, bioc = NULL, write = TRUE,
+  file_name = "bootstrap", file_ext = "sh", rstudio = TRUE,
+  shiny = TRUE)
 }
 \arguments{
 \item{write}{logical indicating whether or not to write the bootstrapping statement to a file}
@@ -12,6 +14,10 @@ bootstrapr(write = TRUE, file_name = "bootstrap", file_ext = ".sh", ...)
 \item{file_name}{name of file to be written; defaults to "bootstrap"}
 
 \item{file_ext}{character vector of length 1 indicating file extension to use; defaults to ".sh"}
+
+\item{rstudio}{logical indicating whether or not to include a RStudio Server}
+
+\item{shiny}{logical indicating whether or not to include a Shiny Server}
 }
 \description{
 This function creates the bootstrapping script

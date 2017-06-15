@@ -37,11 +37,11 @@ packages <- function(cran = NULL, bioc = NULL) {
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
 #' @param packages a character vector specifying packages from CRAN repository that you would like to install
-#' @param repos a character vector of length 1 specifying packages the CRAN mirror from which you want to install the packages; defaults to "https://cloud.r-project.org"
+#' @param repos a character vector of length 1 specifying packages the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option
 #'
 #'
 
-cran_packages <- function(packages = NULL, repos = "https://cloud.r-project.org") {
+cran_packages <- function(packages = NULL, repos = getOption("repos")["CRAN"]) {
 
   if(is.null(packages)) {
 
