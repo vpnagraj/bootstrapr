@@ -9,6 +9,10 @@ bootstrapr(cran = NULL, bioc = NULL, write = TRUE,
   shiny = TRUE)
 }
 \arguments{
+\item{cran}{character vector indicating the packages to be installed from \url{https://cran.r-project.org/}}
+
+\item{bioc}{character vector indicating the packages to be installed from \url{http://bioconductor.org/}}
+
 \item{write}{logical indicating whether or not to write the bootstrapping statement to a file}
 
 \item{file_name}{name of file to be written; defaults to "bootstrap"}

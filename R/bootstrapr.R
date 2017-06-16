@@ -6,6 +6,8 @@
 #'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
+#' @param cran character vector indicating the packages to be installed from \url{https://cran.r-project.org/}
+#' @param bioc character vector indicating the packages to be installed from \url{http://bioconductor.org/}
 #' @param write logical indicating whether or not to write the bootstrapping statement to a file
 #' @param file_name name of file to be written; defaults to "bootstrap"
 #' @param file_ext character vector of length 1 indicating file extension to use; defaults to ".sh"
