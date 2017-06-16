@@ -16,12 +16,12 @@
 
 available_packages <- function(source = "CRAN", ...) {
 
-  sources <- c("CRAN", "Bioc")
+  sources <- c("CRAN", "Bioconductor")
 
   if (source == "CRAN") {
-    available.packages(...)
-  } else if (source == "Bioc") {
-    cat("will look for bioconductor packages")
+    utils::available.packages(...)
+  # } else if (source == "Bioconductor") {
+  #   cat("will look for bioconductor packages")
   } else {
     stop(paste0("valid 'source' arguments include:",
                 sapply(sources, paste0, "\n"),
