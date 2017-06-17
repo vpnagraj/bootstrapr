@@ -11,15 +11,16 @@
 #' @param ... further parameters to be passed to the \code{\link{available.packages}} function
 #'
 #' @examples
-#'available_packages()
-#'available_packages(source = "Bioc")
+#' \dontrun{
+#'available_packages(source = "CRAN")
+#'}
 
 available_packages <- function(source = "CRAN", ...) {
 
   sources <- c("CRAN", "Bioconductor")
 
   if (source == "CRAN") {
-    utils::available.packages(...)
+    utils::available.packages(repos = getOption("repos")["CRAN"])
   # } else if (source == "Bioconductor") {
   #   cat("will look for bioconductor packages")
   } else {

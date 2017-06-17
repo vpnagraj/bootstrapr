@@ -15,8 +15,9 @@ available_packages(source = "CRAN", ...)
 This function is a wrapper for the base \code{available.packages}.
 }
 \examples{
-available_packages()
-available_packages(source = "Bioc")
+\dontrun{
+available_packages(source = "CRAN")
+}
 }
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})
