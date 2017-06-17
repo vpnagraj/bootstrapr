@@ -9,11 +9,14 @@
 #' @param cran a character vector specifying packages from CRAN repository that you would like to install
 #'
 #' @param bioc a character vector specifying packages from the Bioconductor repository that you would like to install
+#' @param ... further parameters to be passed the cran_packages() internal function
 #'
 #' @examples
+#' \dontrun{
 #'packages(cran = c("dplyr", "ggplot2", "epicontacts", "rrefine"))
+#'}
 
-packages <- function(cran = NULL, bioc = NULL) {
+packages <- function(cran = NULL, bioc = NULL, ...) {
 
   if (is.null(cran) & is.null(bioc)) {
 
@@ -21,7 +24,7 @@ packages <- function(cran = NULL, bioc = NULL) {
 
   } else {
 
-    paste0(cran_packages(packages = cran),
+    paste0(cran_packages(packages = cran, ...),
            "\n",
            bioc_packages(packages = bioc))
 
@@ -37,11 +40,14 @@ packages <- function(cran = NULL, bioc = NULL) {
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
 #' @param packages a character vector specifying packages from CRAN repository that you would like to install
-#' @param repos a character vector of length 1 specifying packages the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option
+#' @param cran_repo a character vector of length 1 specifying the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option
 #'
 #'
 
-cran_packages <- function(packages = NULL, repos = getOption("repos")["CRAN"]) {
+cran_packages <- function(packages = NULL, cran_repo = getOption("repos")["CRAN"]) {
+
+  # define 'not in' operator
+  '%!in%' <- function(x,y)!('%in%'(x,y))
 
   if(is.null(packages)) {
 
@@ -49,12 +55,21 @@ cran_packages <- function(packages = NULL, repos = getOption("repos")["CRAN"]) {
 
   } else {
 
+    check <- packages[packages %!in% row.names(available_packages(repos = cran_repo))]
+
+    if (length(check) > 0) {
+
+      stop(sprintf("%s is not available in the CRAN repository you specified ...\n", check))
+
+    } else {
+
     paste0("sudo R --no-save << EOF\n",
            "install.packages(c(",
            eval(paste0("'", packages, "'", collapse = ",")),
            ")), repos = ",
-           paste0("'", repos, "'"),
+           paste0("'", cran_repo, "'"),
            ")\nEOF")
+    }
   }
 }
 

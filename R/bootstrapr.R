@@ -13,16 +13,16 @@
 #' @param file_ext character vector of length 1 indicating file extension to use; defaults to ".sh"
 #' @param rstudio logical indicating whether or not to include a RStudio Server
 #' @param shiny logical indicating whether or not to include a Shiny Server
-#'
+#' @param cran_repo a character vector of length 1 specifying the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option
 #' @examples
 #' bootstrapr()
 
-bootstrapr <- function(cran = NULL, bioc = NULL, write = TRUE, file_name = "bootstrap", file_ext = "sh", rstudio = TRUE, shiny = TRUE) {
+bootstrapr <- function(cran = NULL, bioc = NULL, write = TRUE, file_name = "bootstrap", file_ext = "sh", rstudio = TRUE, shiny = TRUE, cran_repo = getOption("repos")["CRAN"]) {
 
   script <-
     c(setup(),
       dependencies(),
-      packages(cran, bioc),
+      packages(cran, bioc, cran_repo),
       rstudio_server(),
       shiny_server())
 

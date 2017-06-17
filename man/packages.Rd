@@ -4,18 +4,22 @@
 \alias{packages}
 \title{Build list of packages}
 \usage{
-packages(cran = NULL, bioc = NULL)
+packages(cran = NULL, bioc = NULL, ...)
 }
 \arguments{
 \item{cran}{a character vector specifying packages from CRAN repository that you would like to install}
 
 \item{bioc}{a character vector specifying packages from the Bioconductor repository that you would like to install}
+
+\item{...}{further parameters to be passed the cran_packages() internal function}
 }
 \description{
 Creates the list of packages to be installed on the server
 }
 \examples{
+\dontrun{
 packages(cran = c("dplyr", "ggplot2", "epicontacts", "rrefine"))
+}
 }
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})

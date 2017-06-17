@@ -20,7 +20,7 @@ available_packages <- function(source = "CRAN", ...) {
   sources <- c("CRAN", "Bioconductor")
 
   if (source == "CRAN") {
-    utils::available.packages(repos = getOption("repos")["CRAN"])
+    utils::available.packages(...)
   # } else if (source == "Bioconductor") {
   #   cat("will look for bioconductor packages")
   } else {
