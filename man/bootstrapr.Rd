@@ -28,9 +28,6 @@ bootstrapr(cran = NULL, bioc = NULL, write = TRUE,
 \description{
 This function creates the bootstrapping script
 }
-\examples{
-bootstrapr()
-}
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})
 }
