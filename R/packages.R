@@ -94,7 +94,7 @@ bioc_packages <- function(packages = NULL) {
     paste0("sudo R --no-save << EOF\n",
            "source('https://bioconductor.org/biocLite.R'); biocLite(c(",
            eval(paste0("'", packages, "'", collapse = ",")),
-           ")))\nEOF")
+           "))\nEOF")
   }
 
 }
