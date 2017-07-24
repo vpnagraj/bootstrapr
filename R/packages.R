@@ -66,7 +66,7 @@ cran_packages <- function(packages = NULL, cran_repo = getOption("repos")["CRAN"
     paste0("sudo R --no-save << EOF\n",
            "install.packages(c(",
            eval(paste0("'", packages, "'", collapse = ",")),
-           ")), repos = ",
+           "), repos = ",
            paste0("'", cran_repo, "'"),
            ")\nEOF")
     }
