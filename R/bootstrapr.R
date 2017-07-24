@@ -41,6 +41,6 @@ bootstrapr <- function(cran = NULL, bioc = NULL, write = TRUE, file_name = "boot
 
   }
 
-  cat(script, collapse = "\n")
+  paste0(script, collapse = "\n")
 
 }
