@@ -1,35 +1,37 @@
-# get all packages from CRAN
-# multiple text input with choices ^
-
-# something similar for bioconductor
-
-# multiple text input with free text for GH
-
-# output raw text and download button
-
-# write package to automate this?
-
-package_choices <- row.names(available.packages())
-
-
 library(shiny)
+
+cran_package_choices <- row.names(available.packages())
+bioc_package_choices <- BiocInstaller::all_group()
+instance_choices <- c("t2.medium", "t2.large", "m4.xlarge")
 
 shinyUI(fluidPage(
 
   # Application title
   titlePanel("bootstrapr"),
 
-  # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-      selectizeInput(inputId = "package", 
-                     label = h3("choose package(s) to be installed"), 
-                     choices = package_choices,
+      selectizeInput(inputId = "cranpackage",
+                     label = h3("choose CRAN package(s) to be installed"),
+                     choices = cran_package_choices,
                      multiple = TRUE),
-      downloadButton("dlscript", "download script")
+      selectizeInput(inputId = "biocpackage",
+                     label = h3("choose Bioconductor package(s) to be installed"),
+                     choices = bioc_package_choices,
+                     multiple = TRUE),
+      downloadButton("dlscript", "download script"),
+      tags$hr(""),
+      actionButton("run", "run instance", icon = icon("power-off")),
+      conditionalPanel(condition = "input.run == 1",
+                         selectInput("instancetype",
+                                     label = "instance type",
+                                     choices = instance_choices,
+                                     selected = "t2.medium"),
+                         textInput("key", "key name"),
+                         textInput("sg", "security group"),
+                         actionButton("launch", "launch it!", icon = icon("rocket"))
+                       )
     ),
-
-    # Show a plot of the generated distribution
     mainPanel(
       verbatimTextOutput("script", placeholder = TRUE)
     )

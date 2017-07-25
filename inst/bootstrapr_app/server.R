@@ -5,24 +5,13 @@ shinyServer(function(input, output) {
 
   script <- reactive({
 
-    if (is.null(input$package)) {
+    if (is.null(input$cranpackage) & is.null(input$biocpackage)) {
 
-      c(setup(),
-         dependencies(), "\nwget https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb\nsudo gdebi rstudio-server-0.99.903-amd64.deb")
-      # "\nwget https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb\nsudo gdebi rstudio-server-0.99.903-amd64.deb"
+      bootstrapr()
 
     } else {
 
-      c(setup(),
-        dependencies(),
-        sapply(input$package,
-               function(x) paste0("\nsudo su - -c 'R -e \'install.packages('", x, "',repos='http://cran.rstudio.com/')\'"))
-        ,"\n\nwget https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb\nsudo gdebi rstudio-server-0.99.903-amd64.deb")
-
-      # c(
-      #   sapply(input$package,
-      #          function(x) paste0("\nsudo su - -c 'R -e \'install.packages('", x, "',repos='http://cran.rstudio.com/')\'"))
-      #   ,"\n\nwget https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb\nsudo gdebi rstudio-server-0.99.903-amd64.deb")
+      bootstrapr(cran = input$cranpackage, bioc = input$biocpackage)
 
     }
   })
@@ -38,7 +27,38 @@ shinyServer(function(input, output) {
     filename = "bootstrap.sh",
     content = function(file) {
         writeLines(script(), file)
+
     }
   )
+
+  observeEvent(input$launch, {
+
+    withProgress(message = "provisioning",
+                 detail = '...', value = 0, {
+                   for (i in 1:50) {
+                     incProgress(1/50)
+                     Sys.sleep(0.25)
+                   }
+
+                   metadat <- aws.ec2::run_instances("ami-80861296",
+                                                     type = input$instancetype,
+                                                     keypair = input$key,
+                                                     sgroup = input$sg,
+                                                     userdata = caTools::base64encode(script()))
+
+
+                   id <- unlist(metadat)["item.instanceId"]
+
+                   Sys.sleep(30)
+
+                   info <- aws.ec2::describe_instances(id)
+
+                   publicip <- unlist(info[[1]])["instancesSet.networkInterfaceSet.association.publicIp"]
+                   showNotification(paste0("your instance is available at: ", publicip),
+                                    type = "message",
+                                    duration = NULL)
+
+                 })
+  })
 
 })
