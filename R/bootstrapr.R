@@ -15,7 +15,7 @@
 #' @param shiny logical indicating whether or not to include a Shiny Server
 #' @param cran_repo a character vector of length 1 specifying the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option
 
-bootstrapr <- function(cran = NULL, bioc = NULL, write = TRUE, file_name = "bootstrap", file_ext = "sh", rstudio = TRUE, shiny = TRUE, cran_repo = getOption("repos")["CRAN"]) {
+bootstrapr <- function(cran = NULL, bioc = NULL, write = FALSE, file_name = "bootstrap", file_ext = "sh", rstudio = TRUE, shiny = TRUE, cran_repo = getOption("repos")["CRAN"]) {
 
   script <-
     c(setup(),
