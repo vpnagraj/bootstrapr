@@ -4,7 +4,7 @@
 \alias{bootstrapr}
 \title{Create the bootstrapping script}
 \usage{
-bootstrapr(cran = NULL, bioc = NULL, write = TRUE,
+bootstrapr(cran = NULL, bioc = NULL, write = FALSE,
   file_name = "bootstrap", file_ext = "sh", rstudio = TRUE,
   shiny = TRUE, cran_repo = getOption("repos")["CRAN"])
 }

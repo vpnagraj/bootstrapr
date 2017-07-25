@@ -9,9 +9,6 @@ setup()
 \description{
 Helper function to create basic setup for system
 }
-\examples{
-setup()
-}
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})
 }

@@ -12,9 +12,6 @@ rstudio_server(include = TRUE)
 \description{
 Helper function to create RStudio Server setup
 }
-\examples{
-rstudio_server()
-}
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})
 }

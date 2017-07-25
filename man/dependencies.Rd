@@ -14,9 +14,6 @@ dependencies(deps = NULL, update = TRUE)
 \description{
 This function makes it possible to parameterize tools to be installed
 }
-\examples{
-dependencies()
-}
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})
 }

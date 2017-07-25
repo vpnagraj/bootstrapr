@@ -10,9 +10,6 @@
 #'
 #' @param update logical vector indicating whether or not to run \code{apt-get update}
 #'
-#'
-#' @examples
-#' dependencies()
 
 dependencies <- function(deps = NULL, update = TRUE) {
 
@@ -45,11 +42,6 @@ dependencies <- function(deps = NULL, update = TRUE) {
 #'
 #'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
-#'
-#'
-#'
-#' @examples
-#' setup()
 
 setup <- function() {
 
@@ -65,9 +57,6 @@ setup <- function() {
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
 #' @param include logical indicating whether or not you should include the RStudio server
-#'
-#' @examples
-#' rstudio_server()
 
 rstudio_server <- function(include = TRUE) {
 
@@ -92,9 +81,6 @@ echo 'y' | sudo gdebi rstudio-server-1.0.143-amd64.deb
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
 #' @param include logical indicating whether or not you should include the Shiny server
-#'
-#' @examples
-#' shiny_server()
 
 shiny_server <- function(include = TRUE) {
 

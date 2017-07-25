@@ -12,9 +12,6 @@ shiny_server(include = TRUE)
 \description{
 Helper function to create Shiny Server setup
 }
-\examples{
-shiny_server()
-}
 \author{
 VP Nagraj (\email{vpnagraj@virginia.edu})
 }
