@@ -2,7 +2,7 @@ library(shiny)
 
 cran_package_choices <- row.names(available.packages())
 bioc_package_choices <- BiocInstaller::all_group()
-instance_choices <- c("t2.medium", "t2.large", "m4.xlarge")
+instance_choices <- readLines("https://s3.amazonaws.com/instance-types/instance-types.json")
 
 shinyUI(fluidPage(
 
