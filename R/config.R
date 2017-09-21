@@ -9,8 +9,7 @@
 
 dependencies <- function(deps = NULL) {
 
-  deps <- c("sudo apt-get update",
-            deps,
+  deps <- c(deps,
             "r-base --allow-unauthenticated",
             "libapparmor1",
             "libcurl4-gnutls-dev",
@@ -35,7 +34,7 @@ dependencies <- function(deps = NULL) {
 setup <- function() {
 
   # "sudo sh -c 'echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list'"
-  "echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list"
+  "echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list\nsudo apt-get update"
 
 }
 
