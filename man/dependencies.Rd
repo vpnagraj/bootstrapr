@@ -4,12 +4,10 @@
 \alias{dependencies}
 \title{Build dependencies}
 \usage{
-dependencies(deps = NULL, update = TRUE)
+dependencies(deps = NULL)
 }
 \arguments{
 \item{deps}{system dependencies to be installed, specified as a vector}
-
-\item{update}{logical vector indicating whether or not to run \code{apt-get update}}
 }
 \description{
 This function makes it possible to parameterize tools to be installed

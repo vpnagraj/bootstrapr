@@ -8,12 +8,11 @@
 #'
 #' @param deps system dependencies to be installed, specified as a vector
 #'
-#' @param update logical vector indicating whether or not to run \code{apt-get update}
-#'
 
-dependencies <- function(deps = NULL, update = TRUE) {
+dependencies <- function(deps = NULL) {
 
-  deps <- c(deps,
+  deps <- c("sudo apt-get update",
+            deps,
             "r-base --allow-unauthenticated",
             "libapparmor1",
             "libcurl4-gnutls-dev",
@@ -21,18 +20,10 @@ dependencies <- function(deps = NULL, update = TRUE) {
             "libssl-dev",
             "gdebi-core",
             "libcairo2-dev",
-            "libxt-dev",
-            "git-core")
+            "libxt-dev")
 
-  res <- sapply(deps,
+  sapply(deps,
          function(x) paste0("\nsudo apt-get -y install ", x, collapse = "\n"))
-
-  if(update) {
-    c("sudo apt-get update\n",res)
-
-  } else {
-    res
-  }
 
 }
 
