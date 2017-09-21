@@ -2,8 +2,6 @@
 #'
 #' Creates the list of packages to be installed on the server
 #'
-#' @export
-#'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
 #' @param cran a character vector specifying packages from CRAN repository that you would like to install
@@ -34,8 +32,6 @@ packages <- function(cran = NULL, bioc = NULL, ...) {
 #' Build list of CRAN packages
 #'
 #' Creates the list of packages from CRAN to be installed on the server
-#'
-#' @export
 #'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
@@ -74,8 +70,6 @@ cran_packages <- function(packages = NULL, cran_repo = getOption("repos")["CRAN"
 }
 
 #' Creates the list of packages from Bioconductor to be installed on the server
-#'
-#' @export
 #'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'

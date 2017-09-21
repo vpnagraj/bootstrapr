@@ -2,8 +2,6 @@
 #'
 #' This function makes it possible to parameterize tools to be installed
 #'
-#' @export
-#'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 #'
 #' @param deps system dependencies to be installed, specified as a vector
