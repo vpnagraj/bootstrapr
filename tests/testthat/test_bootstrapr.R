@@ -10,10 +10,10 @@ context("dependencies")
 
 test_that("rstudio server and shiny server include args work", {
 
-  isthere <- grepl("rstudio-server", bootstrapr("dplyr", rstudio = FALSE, write = F))
+  isthere <- grepl("rstudio-server", bootstrapr(rstudio_server = FALSE, write = F))
   expect_false(isthere)
 
-  isthere <- grepl("shiny-server", bootstrapr("dplyr", shiny = FALSE, write = F))
+  isthere <- grepl("shiny-server", bootstrapr(shiny_server = FALSE, write = F))
   expect_false(isthere)
 
 })
