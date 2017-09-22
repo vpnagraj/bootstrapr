@@ -5,8 +5,8 @@
 \title{Create the bootstrapping script}
 \usage{
 bootstrapr(cran = NULL, bioc = NULL, write = FALSE,
-  file_name = "bootstrap", file_ext = "sh", rstudio = TRUE,
-  shiny = TRUE, cran_repo = getOption("repos")["CRAN"])
+  file_name = "bootstrap", file_ext = "sh", rstudio_server = TRUE,
+  shiny_server = TRUE, cran_repo = getOption("repos")["CRAN"])
 }
 \arguments{
 \item{cran}{character vector indicating the packages to be installed from \url{https://cran.r-project.org/}}
@@ -19,9 +19,9 @@ bootstrapr(cran = NULL, bioc = NULL, write = FALSE,
 
 \item{file_ext}{character vector of length 1 indicating file extension to use; defaults to ".sh"}
 
-\item{rstudio}{logical indicating whether or not to include a RStudio Server}
+\item{rstudio_server}{logical indicating whether or not to include a RStudio Server}
 
-\item{shiny}{logical indicating whether or not to include a Shiny Server}
+\item{shiny_server}{logical indicating whether or not to include a Shiny Server}
 
 \item{cran_repo}{a character vector of length 1 specifying the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option}
 }
