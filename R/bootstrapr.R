@@ -21,8 +21,8 @@ bootstrapr <- function(cran = NULL, bioc = NULL, write = FALSE, file_name = "boo
     c(setup(),
       dependencies(),
       packages(cran, bioc, cran_repo),
-      rstudio_server(),
-      shiny_server())
+      rstudio_server(rstudio),
+      shiny_server(shiny))
 
 
   if(file_ext == "sh") {
