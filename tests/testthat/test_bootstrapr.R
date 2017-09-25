@@ -6,6 +6,12 @@ test_that("user cannot specify package not in CRAN", {
 
 })
 
+test_that("user cannot specify unavailable source", {
+
+  expect_error(available_packages(source = "foo"))
+
+})
+
 test_that("package appears in bootstrapping script", {
 
   isthere <- grepl("dplyr", bootstrapr(cran = "dplyr", write = FALSE))
@@ -24,3 +30,5 @@ test_that("rstudio server and shiny server include args work", {
   expect_false(isthere)
 
 })
+
+
