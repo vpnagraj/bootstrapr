@@ -28,13 +28,20 @@ dependencies <- function(deps = NULL) {
 #'
 #' Helper function to create basic setup for system
 #'
+#' @param docker logical indicating whether or not the bootstrapped script generated should be in DOCKERFILE format
 #'
 #' @author VP Nagraj (\email{vpnagraj@virginia.edu})
 
-setup <- function() {
+setup <- function(docker = FALSE) {
 
-  # "sudo sh -c 'echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list'"
-  "echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list\nsudo apt-get update"
+  if(docker) {
+
+    "FROM r-base"
+
+  } else {
+
+    "echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list\nsudo apt-get update"
+  }
 
 }
 

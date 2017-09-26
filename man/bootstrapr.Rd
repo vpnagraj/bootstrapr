@@ -5,8 +5,8 @@
 \title{Create the bootstrapping script}
 \usage{
 bootstrapr(cran = NULL, bioc = NULL, write = FALSE,
-  file_name = "bootstrap.sh", rstudio_server = TRUE, shiny_server = TRUE,
-  cran_repo = getOption("repos")["CRAN"])
+  file_name = "bootstrap.sh", docker = FALSE, rstudio_server = TRUE,
+  shiny_server = TRUE, cran_repo = getOption("repos")["CRAN"])
 }
 \arguments{
 \item{cran}{character vector indicating the packages to be installed from \url{https://cran.r-project.org/}}
@@ -16,6 +16,8 @@ bootstrapr(cran = NULL, bioc = NULL, write = FALSE,
 \item{write}{logical indicating whether or not to write the bootstrapping statement to a file}
 
 \item{file_name}{name of file to be written; defaults to "bootstrap.sh"}
+
+\item{docker}{logical indicating whether or not the bootstrapped script generated should be in DOCKERFILE format}
 
 \item{rstudio_server}{logical indicating whether or not to include a RStudio Server}
 

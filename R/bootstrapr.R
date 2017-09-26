@@ -10,14 +10,15 @@
 #' @param bioc character vector indicating the packages to be installed from \url{http://bioconductor.org/}
 #' @param write logical indicating whether or not to write the bootstrapping statement to a file
 #' @param file_name name of file to be written; defaults to "bootstrap.sh"
+#' @param docker logical indicating whether or not the bootstrapped script generated should be in DOCKERFILE format
 #' @param rstudio_server logical indicating whether or not to include a RStudio Server
 #' @param shiny_server logical indicating whether or not to include a Shiny Server
 #' @param cran_repo a character vector of length 1 specifying the CRAN mirror from which you want to install the packages; defaults to user's CRAN mirror global option
 
-bootstrapr <- function(cran = NULL, bioc = NULL, write = FALSE, file_name = "bootstrap.sh", rstudio_server = TRUE, shiny_server = TRUE, cran_repo = getOption("repos")["CRAN"]) {
+bootstrapr <- function(cran = NULL, bioc = NULL, write = FALSE, file_name = "bootstrap.sh", docker = FALSE, rstudio_server = TRUE, shiny_server = TRUE, cran_repo = getOption("repos")["CRAN"]) {
 
   script <-
-    c(setup(),
+    c(setup(docker),
       dependencies(),
       packages(cran, bioc, cran_repo),
       rstudio_server(rstudio_server),

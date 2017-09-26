@@ -4,7 +4,10 @@
 \alias{setup}
 \title{Basic system setup}
 \usage{
-setup()
+setup(docker = FALSE)
+}
+\arguments{
+\item{docker}{logical indicating whether or not the bootstrapped script generated should be in DOCKERFILE format}
 }
 \description{
 Helper function to create basic setup for system
