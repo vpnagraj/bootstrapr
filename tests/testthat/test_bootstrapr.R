@@ -17,6 +17,9 @@ test_that("package appears in bootstrapping script", {
   isthere <- grepl("dplyr", bootstrapr(cran = "dplyr", write = FALSE))
   expect_true(isthere)
 
+  isthere <- grepl("LOLA", bootstrapr(bioc = "LOLA", write = FALSE))
+  expect_true(isthere)
+
 })
 
 context("dependencies")
