@@ -2,8 +2,8 @@ Package: bootstrapr
 Type: Package
 Title: Generate Bootstrapping Scripts
 Version: 0.1.0
-Authors@R: c(person("VP", "Nagraj", role = c("aut", "cre"), email = "vpnagraj@virginia.edu"))
-Maintainer: VP Nagraj <vpnagraj@virginia.edu>
+Authors@R: c(person("VP", "Nagraj", role = c("aut", "cre"), email = "nagraj@nagraj.net"))
+Maintainer: VP Nagraj <nagraj@nagraj.net>
 Description: This package provides a convenient method for specifying R packages to be installed in a setup script, which can be used as a bootstrap for an Amazon Web Services EC2 Instance. 
 Imports:
    shiny
